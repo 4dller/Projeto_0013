@@ -102,5 +102,13 @@
     "which": "^2.0.2",
     "yaml": "^2.5.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4dller/Projeto_0013.git"
+  },
+  "bugs": {
+    "url": "https://github.com/4dller/Projeto_0013/issues"
+  },
+  "homepage": "https://github.com/4dller/Projeto_0013#readme",
   "description": ""
 }
