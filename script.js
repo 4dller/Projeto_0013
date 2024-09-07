@@ -15,6 +15,7 @@ let cart = [];
 // Função de abrir o modal do carrinho 
 
 cartBtn.addEventListener("click", function() {
+    updateCartModal();
     cartModal.style.display = "flex"
 })
 
@@ -32,13 +33,13 @@ closeModalBtn.addEventListener("click", function(){
 })
 
 menu.addEventListener("click", function(){
-    let parentButton = event.target.closest(.add-to-cart-btn)
+    let parentButton = event.target.closest(".add-to-cart-btn")
 
     if(parentButton){
         const name = parentButton.getAttribute("data-name")
         const price = parseFloat(parentButton.getAttribute("data-price"))
 
-        addToCart(name,price)
+        addToCart(name, price)
     }
 })
 
@@ -50,14 +51,41 @@ function addToCart (name, price) {
 
     if(existingItem) {
         existingItem.quantity += 1;
-        return;
-    }
+    
+    }else {
 
      cart.push(
         {name,
          price, 
          quantity:1
         })
+    }
+    updateCartModal()
 }
 
 // atualiza visualmente os itens no carrinho
+
+
+function updateCartModal() {
+    cartItemsContainer.innerHTML = "";
+    let total = 0;
+
+    cart.forEach( item => {
+        const cartItemElement = document.createElement("div"); 
+
+        cartItemElement.innerHTML = `
+            <div>
+                <div>
+                    <p>${item.name}</p>
+                    <p>${item.quantity}</p>
+                    <p>${item.price}</p>
+                </div>
+                <div>
+                
+                </div>
+            </div>
+        `
+        cartItemsContainer.appendChild(cartItemElement)
+    })
+
+}
